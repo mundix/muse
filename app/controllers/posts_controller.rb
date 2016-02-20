@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = Comment.where(post_id: @post)
   end
 
   def new
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post
     else
-        render "eit"
+        render "edit"
     end
   end
 
