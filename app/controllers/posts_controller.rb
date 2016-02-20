@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @comments = Comment.where(post_id: @post)
+    @random_post = Post.where.not(id: @post).order("RANDOM()").first
   end
 
   def new
